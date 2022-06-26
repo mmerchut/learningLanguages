@@ -3,6 +3,9 @@ const currentWordEng = document.querySelector(".current-word-eng");
 const checkWord = document.querySelector('.check');
 const start = document.querySelector('.start');
 const inputWord = document.querySelector("#word");
+const switchLanguage = document.querySelector(".switch");
+// let currentTF = 0;
+let frenchB = true;
 let randomWord = "";
 let wordToLearn = "";
 let wordtoLearnEng = "";
@@ -17,7 +20,10 @@ const frenchWords = [
     "la",
     "tu",
     "que",
-    "un"
+    "un",
+    "il",
+    "et",
+    "a"
 
 ]
 
@@ -31,13 +37,20 @@ const englishWords = [
     "The",
     "You",
     "That",
-    "A"
+    "A",
+    "He",
+    "And",
+    "At",
 
 
-]
+
+];
+
+// let myInterval = setTimeout(hideCurrentWord, 2000);
 
 function getRandomWord() {
-    randomWord = Math.floor(Math.random() * (10 - 1)) + 1;
+    if(frenchB == true) {
+        randomWord = Math.floor(Math.random() * (10 - 1)) + 1;
     console.log(randomWord);
     wordToLearn = frenchWords[randomWord];
     wordtoLearnEng = englishWords[randomWord];
@@ -46,6 +59,19 @@ function getRandomWord() {
      currentWordEng.textContent = wordtoLearnEng;
 
      setTimeout(hideCurrentWord, 2000)
+    }
+    if(frenchB == false) {
+    randomWord = Math.floor(Math.random() * (10 - 1)) + 1;
+    console.log(randomWord);
+    wordToLearn = englishWords[randomWord];
+    wordtoLearnEng = frenchWords[randomWord];
+     console.log(wordToLearn)
+     currentWord.textContent = wordtoLearnEng;
+     currentWordEng.textContent = wordToLearn;
+
+     setTimeout(hideCurrentWord, 2000)
+    }
+    
   }
 
 
@@ -61,12 +87,17 @@ function checkText() {
     if(inputWord.value.toLowerCase() == wordToLearn) {
         currentWord.style.display = "inline-block";
         console.log('2');
-
-        getRandomWord()
+        getRandomWord();
         inputWord.value = '';
-        console.log(wordToLearn)
+        console.log(wordToLearn);
+
+        
 
     }
+}
+
+function changeLanguage() {
+    frenchB = !frenchB;
 }
 
 // function check() {
@@ -83,4 +114,5 @@ function checkText() {
 
 inputWord.addEventListener("keyup", checkText);
 start.addEventListener("click", getRandomWord);
+switchLanguage.addEventListener("click", changeLanguage)
 // checkWord.addEventListener('click', check);
