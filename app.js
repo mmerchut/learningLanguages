@@ -10,7 +10,12 @@ const frenchWords = [
     "de",
     "est",
     "pas",
-    "le"
+    "le",
+    "vous",
+    "la",
+    "tu",
+    "que",
+    "un"
 
 ]
 
@@ -19,14 +24,22 @@ const englishWords = [
     "Of",
     "Is",
     "Not",
-    "The"
+    "The",
+    "You",
+    "The",
+    "You",
+    "That",
+    "A"
+
+
 ]
 
 function getRandomWord() {
-    randomWord = Math.floor(Math.random() * (5 - 1)) + 1;
+    randomWord = Math.floor(Math.random() * (10 - 1)) + 1;
     console.log(randomWord);
     wordToLearn = frenchWords[randomWord];
      console.log(wordToLearn)
+     currentWord.textContent = wordToLearn;
   }
 
 
@@ -39,23 +52,24 @@ function checkText() {
         console.log('2');
 
         getRandomWord()
+        inputWord.value = '';
         console.log(wordToLearn)
 
     }
 }
 
-function check() {
-    console.log("1")
-    if(inputWord.value == word) {
+// function check() {
+//     console.log("1")
+//     if(inputWord.value == word) {
 
-        console.log('2');
-        // getRandomWord()
-        // console.log(wordToLearn)
-    }
+//         console.log('2');
+//         // getRandomWord()
+//         // console.log(wordToLearn)
+//     }
     
-}
+// }
 
 
-inputWord.addEventListener("keydown", checkText);
+inputWord.addEventListener("keyup", checkText);
 start.addEventListener("click", getRandomWord);
-checkWord.addEventListener('click', check);
+// checkWord.addEventListener('click', check);
