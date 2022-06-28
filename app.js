@@ -9,10 +9,10 @@ const conversation = document.querySelector(".conversation");
 // let currentTF = 0;
 let frenchB = true;
 let randomWord = "";
+// let randomConversation = "";
 let wordToLearn = "";
 let wordtoLearnEng = "";
-let xBoolean = "";
-
+let xBoolean = true;
 
 const frenchWords = [
     "je",
@@ -35,8 +35,6 @@ const frenchWords = [
     "on",
     "ca",
     "une"
-
-
 ]
 
 const englishWords = [
@@ -62,7 +60,6 @@ const englishWords = [
     "A"
 ];
 
-
 const frenchConversation = [
     "Bonjour",
     "Ca Va?",
@@ -84,18 +81,15 @@ const englishConversation = [
 function getRandomWord() {
     
     if(frenchB == true) {
-        randomWord = Math.floor(Math.random() * (20 - 1)) + 1;
+    randomWord = Math.floor(Math.random() * (20 - 1)) + 1;
     console.log(randomWord);
     wordToLearn = frenchWords[randomWord];
     wordtoLearnEng = englishWords[randomWord];
      console.log(wordToLearn)
      currentWord.textContent = wordToLearn;
      currentWordEng.textContent = wordtoLearnEng;
-     
-    
-
-     
     }
+
     if(frenchB == false) {
     randomWord = Math.floor(Math.random() * (10 - 1)) + 1;
     console.log(randomWord);
@@ -104,15 +98,44 @@ function getRandomWord() {
      console.log(wordToLearn)
      currentWord.textContent = wordtoLearnEng;
      currentWordEng.textContent = wordToLearn;
-     
-     
-
     }
+
+            if(xBoolean == false) {
+            randomConversation = Math.floor(Math.random() * (20 - 1)) + 1;
+            console.log(randomWord);
+            wordToLearn = frenchConversation[randomConversation];
+            wordtoLearnEng = englishConversation[randomConversation];
+             console.log(wordToLearn)
+             currentWord.textContent = wordToLearn;
+             currentWordEng.textContent = wordtoLearnEng;
+            }
     
+  
+
+//   function getRandomConversation() {
+    
+//     if(xBoolean == false) {
+//     randomConversation = Math.floor(Math.random() * (20 - 1)) + 1;
+//     console.log(randomWord);
+//     wordToLearn = frenchConversation[randomConversation];
+//     wordtoLearnEng = englishConversation[randomConversation];
+//      console.log(wordToLearn)
+//      currentWord.textContent = wordToLearn;
+//      currentWordEng.textContent = wordtoLearnEng;
+//     }
+
+    // if(frenchB == false) {
+    // randomWord = Math.floor(Math.random() * (10 - 1)) + 1;
+    // console.log(randomWord);
+    // wordToLearn = englishWords[randomWord];
+    // wordtoLearnEng = frenchWords[randomWord];
+    //  console.log(wordToLearn)
+    //  currentWord.textContent = wordtoLearnEng;
+    //  currentWordEng.textContent = wordToLearn;
+    // }
   }
 
-
-let word = "test"
+// let word = "test"
 
 function hideCurrentWord() {
    console.log('hide current word')
@@ -129,7 +152,6 @@ function checkText() {
         inputWord.value = '';
         console.log(wordToLearn);
         // setTimeout(hideCurrentWord, 2000); ??
-
     }
 }
 
@@ -140,12 +162,10 @@ function changeLanguage() {
 // function check() {
 //     console.log("1")
 //     if(inputWord.value == word) {
-
 //         console.log('2');
 //         // getRandomWord()
 //         // console.log(wordToLearn)
-//     }
-    
+//     }   
 // }
 
 function wordsTrue() {
@@ -160,7 +180,6 @@ function conversationTrue() {
     console.log(xBoolean);
     words.checked = false;
 }
-
 
 inputWord.addEventListener("keyup", checkText);
 start.addEventListener("click", getRandomWord);
