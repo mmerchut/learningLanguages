@@ -4,11 +4,15 @@ const checkWord = document.querySelector('.check');
 const start = document.querySelector('.start');
 const inputWord = document.querySelector("#word");
 const switchLanguage = document.querySelector(".switch");
+const words = document.querySelector(".words");
+const conversation = document.querySelector(".conversation");
 // let currentTF = 0;
 let frenchB = true;
 let randomWord = "";
 let wordToLearn = "";
 let wordtoLearnEng = "";
+let xBoolean = "";
+
 
 const frenchWords = [
     "je",
@@ -23,7 +27,15 @@ const frenchWords = [
     "un",
     "il",
     "et",
-    "a"
+    "a",
+    "ne",
+    "les",
+    "ce",
+    "en",
+    "on",
+    "ca",
+    "une"
+
 
 ]
 
@@ -41,24 +53,48 @@ const englishWords = [
     "He",
     "And",
     "At",
-
-
-
+    "Not",
+    "Them",
+    "This",
+    "In",
+    "We",
+    "That",
+    "A"
 ];
+
+
+const frenchConversation = [
+    "Bonjour",
+    "Ca Va?",
+    "Ca Va, Et toi?",
+    "Ca Va. Au revoir",
+    "Quoi de neuf?"
+]
+
+const englishConversation = [
+    "Hello",
+    "How are you doing?",
+    "I'm fine, and you?",
+    "I'm fine, see you",
+    "What's up?",
+]
 
 // let myInterval = setTimeout(hideCurrentWord, 2000);
 
 function getRandomWord() {
+    
     if(frenchB == true) {
-        randomWord = Math.floor(Math.random() * (10 - 1)) + 1;
+        randomWord = Math.floor(Math.random() * (20 - 1)) + 1;
     console.log(randomWord);
     wordToLearn = frenchWords[randomWord];
     wordtoLearnEng = englishWords[randomWord];
      console.log(wordToLearn)
      currentWord.textContent = wordToLearn;
      currentWordEng.textContent = wordtoLearnEng;
+     
+    
 
-     setTimeout(hideCurrentWord, 2000)
+     
     }
     if(frenchB == false) {
     randomWord = Math.floor(Math.random() * (10 - 1)) + 1;
@@ -68,8 +104,9 @@ function getRandomWord() {
      console.log(wordToLearn)
      currentWord.textContent = wordtoLearnEng;
      currentWordEng.textContent = wordToLearn;
+     
+     
 
-     setTimeout(hideCurrentWord, 2000)
     }
     
   }
@@ -78,20 +115,20 @@ function getRandomWord() {
 let word = "test"
 
 function hideCurrentWord() {
-   console.log('1')
+   console.log('hide current word')
    currentWord.style.display = "none";
 }
 
 function checkText() {
-    console.log("1")
+    console.log("check text 2")
     if(inputWord.value.toLowerCase() == wordToLearn) {
         currentWord.style.display = "inline-block";
         console.log('2');
+        // inputWord.style.backGroundColor = "green"; ??
         getRandomWord();
         inputWord.value = '';
         console.log(wordToLearn);
-
-        
+        // setTimeout(hideCurrentWord, 2000); ??
 
     }
 }
@@ -111,8 +148,23 @@ function changeLanguage() {
     
 // }
 
+function wordsTrue() {
+    if(xBoolean == false);
+    xBoolean = true;
+    console.log(xBoolean);
+    conversation.checked = false;
+}
+
+function conversationTrue() {
+    xBoolean = false;
+    console.log(xBoolean);
+    words.checked = false;
+}
+
 
 inputWord.addEventListener("keyup", checkText);
 start.addEventListener("click", getRandomWord);
 switchLanguage.addEventListener("click", changeLanguage)
+words.addEventListener("click", wordsTrue)
+conversation.addEventListener("click", conversationTrue)
 // checkWord.addEventListener('click', check);
